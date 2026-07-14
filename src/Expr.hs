@@ -1,7 +1,10 @@
 module Expr where
 
+data Op 
+    = Add 
+    | Mul 
+    | Sub
+
 data Expr 
-    = Add Expr Expr
-    | Mul Expr Expr 
-    | Sub Expr Expr 
+    = BinOp Op Expr Expr 
     | Val Double 
