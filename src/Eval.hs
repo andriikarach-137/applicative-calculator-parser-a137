@@ -20,4 +20,4 @@ eval (Val n) = Just n
 eval (BinOp op e1 e2) = 
     eval e1 >>= \x -> 
     eval e2 >>= \y ->
-    apply op e1 e2 
+    apply op x y
