@@ -1,7 +1,6 @@
 module Eval where
 
 import Expr 
-import Control.Applicative (liftA2)
 
 
 apply :: Op -> Double -> Double -> Maybe Double 
@@ -18,4 +17,7 @@ safeDiv n m = Just $ n / m
 
 eval :: Expr -> Maybe Double 
 eval (Val n) = Just n 
-eval (BinOp op e1 e2) = liftA2 (apply op) (eval e1) (eval e2)
+eval (BinOp op e1 e2) = 
+    eval e1 >>= \x -> 
+    eval e2 >>= \y ->
+    apply op e1 e2 
