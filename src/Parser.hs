@@ -6,7 +6,7 @@ import Data.Char
 import Control.Applicative (many, some)
 
 arithmChar :: Op -> Char 
-arithmChar Add = "+"
+arithmChar Add = '+'
 arithmChar Mul = '*'
 arithmChar Sub = '-'
 arithmChar Div = '/'
@@ -29,7 +29,7 @@ instance Applicative Parser where
         (f, s')  <- runParser pf s 
         (x, s'') <- runParser px s' 
         return (f x, s'')
-        
+
 
 satisfy :: (Char -> Bool) -> Parser Char 
 satisfy p = Parser $ \s ->
@@ -43,7 +43,7 @@ digit = satisfy isDigit
 
 
 char :: Char -> Parser Char 
-char c = satisfy . (==)
+char = satisfy . (==)
 
 
 arithm :: Op -> Parser Char 
