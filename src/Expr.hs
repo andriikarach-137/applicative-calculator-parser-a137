@@ -5,7 +5,9 @@ data Op
     | Mul 
     | Sub
     | Div
+    deriving Show
 
 data Expr 
     = BinOp Op Expr Expr 
-    | Val Double 
+    | Val Int
+    deriving Show
